@@ -18,14 +18,10 @@
 		<java.version>1.8</java.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-<!--		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>-->
+		<sonar.jacoco.reportPath>${basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.language>java</sonar.language>
-		<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
-		<!-- Jacoco output file for UTs -->
-		<jacoco.out.ut.file>jacoco.exec</jacoco.out.ut.file>
-		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit Tests -->
-		<sonar.coverage.jacoco.xmlReportPaths>${basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-<!--		<sonar.jacoco.reportPath>${basedir}/target/coverage-reports/jacoco-unit.exec</sonar.jacoco.reportPath>-->
+		<!--<sonar.coverage.jacoco.xmlReportPaths>${basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+-->
 	</properties>
 
 	<dependencies>
@@ -101,43 +97,25 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.6.0.1398</version>
-			</plugin>
-
 
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.7.201606060606</version>
 				<configuration>
-					<destFile>${basedir}/target/site/jacoco/jacoco.xml</destFile>
-					<dataFile>${basedir}/target/site/jacoco/jacoco.xml</dataFile>
-					<output>file</output>
+					<destFile>${sonar.jacoco.reportPath}</destFile>
 					<append>true</append>
-					<excludes>
-						<exclude>*MethodAccess</exclude>
-					</excludes>
 				</configuration>
 				<executions>
 					<execution>
-						<id>jacoco-initialize</id>
+						<id>agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
-						</goals>
-						<phase>test-compile</phase>
-					</execution>
-					<execution>
-						<id>jacoco-site</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
+
 
 		</plugins>
 	</build>
