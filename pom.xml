@@ -24,8 +24,8 @@
 		<!-- Jacoco output file for UTs -->
 		<jacoco.out.ut.file>jacoco.exec</jacoco.out.ut.file>
 		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit Tests -->
-		<sonar.coverage.jacoco.xmlReportPaths>../../target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-
+		<!--<sonar.coverage.jacoco.xmlReportPaths>../../target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+-->
 	</properties>
 
 	<dependencies>
