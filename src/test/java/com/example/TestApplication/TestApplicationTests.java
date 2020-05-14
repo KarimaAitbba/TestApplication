@@ -58,13 +58,13 @@ class TestApplicationTests {
 		assertThat(personneService.findAllPersonnes().size()).isEqualTo(0); }
 
 
-	/*@org.junit.Test
+	@Test
 	public void findById_WhenIdValid(){
 		Long id = Long.parseLong("1");
 		Personne personne = personneService.findPersonneById(id);
-		assertThat(personne.getPrenom()).isEqualTo("Test");
+		assertThat(personne).isEqualTo(null);
 	}
-
+/*
 	@org.junit.Test
 	public void findById_WhenIdNotValid(){
 		Long id = Long.parseLong("1");
