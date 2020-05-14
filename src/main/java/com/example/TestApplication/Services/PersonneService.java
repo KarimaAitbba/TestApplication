@@ -22,7 +22,5 @@ public class PersonneService {
         return  personneRepository.getOne(id);
     }
 
-    public  Personne savePersonne(Personne personne){
-        return personneRepository.save(personne);
-    }
+
 }

@@ -28,10 +28,7 @@ public class PersonneController {
     }
 
 
-    @PostMapping(value="/savePersonne")
-    public Personne savePersonne(@RequestBody Personne personne){
-        return personneService.savePersonne(personne);
-    }
+
 
 
 }

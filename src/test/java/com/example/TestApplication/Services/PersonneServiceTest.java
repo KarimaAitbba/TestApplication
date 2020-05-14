@@ -1,9 +1,8 @@
-package com.example.TestApplication.Service;
+package com.example.TestApplication.Services;
 
 
 import com.example.TestApplication.Entity.Personne;
 import com.example.TestApplication.Repository.PersonneRepository;
-import com.example.TestApplication.Services.PersonneService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +20,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.powermock.api.mockito.PowerMockito.spy;
 
-@SpringBootTest
+
 @RunWith(PowerMockRunner.class)
 @PowerMockIgnore("javax.management.*")
 @PrepareForTest({PersonneService.class})
