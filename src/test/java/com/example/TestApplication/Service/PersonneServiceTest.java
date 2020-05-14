@@ -22,7 +22,6 @@ import static org.powermock.api.mockito.PowerMockito.spy;
 
 @RunWith(PowerMockRunner.class)
 @PowerMockIgnore("javax.management.*")
-@PrepareForTest({PersonneService.class})
 public class PersonneServiceTest {
 
     @Mock
