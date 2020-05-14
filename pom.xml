@@ -21,11 +21,13 @@
 		<sonar.language>java</sonar.language>
 		<sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>
 		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-		<jacoco.outputDir>${project.build.directory}/coverage-reports</jacoco.outputDir>
+		<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
 		<!-- Jacoco output file for UTs -->
-		<jacoco.out.ut.file>jacoco-unit.exec</jacoco.out.ut.file>
+		<jacoco.out.ut.file>jacoco.exec</jacoco.out.ut.file>
 		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit Tests -->
 		<sonar.coverage.jacoco.xmlReportPaths>../../target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+
 	</properties>
 
 	<dependencies>
@@ -107,25 +109,49 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
+
+			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.7.201606060606</version>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 		</plugins>
 	</build>
+
+
+	<profiles>
+		<profile>
+			<id>coverage</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>prepare-agent</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>report</id>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
